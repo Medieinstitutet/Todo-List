@@ -8,7 +8,7 @@ function App() {
 
   return (
     <>
-      <AddTodoForm/>
+      {/* <AddTodoForm/> */}
       <TodoList/>
     </>
   )
