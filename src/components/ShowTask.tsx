@@ -14,9 +14,9 @@ export const ShowTask = (props: IShowTask) => {
     return (
         <>
         <ul>
-            <li className={props.task.completed ? "completed" : ""}>{props.task.name}</li>
+            <li onClick={handleClick} className={props.task.completed ? "completed" : ""}>{props.task.name}</li>
         </ul>
-        <button onClick={handleClick}>Task Completed</button>
+        {/* <button onClick={handleClick}>Task Completed</button> */}
         </>
     )
 }
