@@ -22,7 +22,7 @@ export const TodoList = () => {
 
     return (
         <>
-        <h3>To do List</h3>
+        <h2>To do List</h2>
 
         {tasks.map((task) => {
             return <ShowTask task = {task} completeTask={changeTask} key={task.id} />

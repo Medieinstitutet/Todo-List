@@ -43,4 +43,12 @@
 
 .completed {
   text-decoration: line-through;
+  color: rgb(108, 60, 60);
 }
+
+ul {
+  list-style-type: none;
+  text-align: center;
+  padding: 0;
+}
+
