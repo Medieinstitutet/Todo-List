@@ -14,7 +14,7 @@ export const TodoList = () => {
     const changeTask = (id: number) => {
         setTasks(tasks.map((task) => {
             if(task.id === id) {
-                return {...task, completed: true}
+                return {...task, completed: !task.completed}
             } else {
                 return task;
             }
