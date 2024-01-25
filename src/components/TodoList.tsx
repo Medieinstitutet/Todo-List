@@ -5,11 +5,9 @@ import { ShowTask } from "./ShowTask"
 
 export const TodoList = () => {
 
-    const [tasks, setTasks] = useState<Task[]>([
-        new Task(1, "Buy groceries", false),
-        new Task(2, "Go to dance class", false),
-        new Task(3, "Book appointment at the dentist", false)
-    ]);
+    const [tasks, setTasks] = useState<Task[]>( 
+        (JSON.parse(localStorage.getItem("task") || "[]"))
+        );
 
     const changeTask = (id: number) => {
         setTasks(tasks.map((task) => {
@@ -17,14 +15,22 @@ export const TodoList = () => {
                 return {...task, completed: !task.completed}
             } else {
                 return task;
-            }
+            }    
         }))
     };
 
     const AddANewTask = (theNewTask: string) => {
-        setTasks([...tasks, new Task(Date.now(),theNewTask, false)])
+        const ntask = new Task(Date.now(),theNewTask, false);
+        setTasks(prevtasks => [...prevtasks, ntask])
 
+        localStorage.setItem("task", JSON.stringify([...tasks, ntask]));
 
+        const todo = localStorage.getItem("task");
+
+        if(todo) {
+        const todoAsObject = JSON.parse(todo)
+        setTasks(todoAsObject)
+        }
     }
 
     return (

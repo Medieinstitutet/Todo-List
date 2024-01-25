@@ -9,7 +9,7 @@ export const AddTodoForm = (props: IAddTodoProps) => {
 
     const handleClick = () => {
         props.addTodoForm(newTask);
-        
+        setNewTask("");
     }
     
     const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
