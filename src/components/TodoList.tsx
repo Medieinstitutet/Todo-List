@@ -9,29 +9,29 @@ export const TodoList = () => {
         (JSON.parse(localStorage.getItem("task") || "[]"))
         );
 
-    const changeTask = (id: number) => {
-        setTasks(tasks.map((task) => {
-            if(task.id === id) {
-                return {...task, completed: !task.completed}
-            } else {
-                return task;
-            }    
-        }))
-    };
-
     const AddANewTask = (theNewTask: string) => {
         const ntask = new Task(Date.now(),theNewTask, false);
-        setTasks(prevtasks => [...prevtasks, ntask])
-
-        localStorage.setItem("task", JSON.stringify([...tasks, ntask]));
-
-        const todo = localStorage.getItem("task");
-
-        if(todo) {
-        const todoAsObject = JSON.parse(todo)
-        setTasks(todoAsObject)
-        }
+        setTasks((prevtasks) => {
+            const newtasks = [...prevtasks, ntask]
+            localStorage.setItem("task", JSON.stringify(newtasks))
+            return newtasks;
+        })
     }
+
+    const changeTask = (id: number) => {
+        setTasks((prevtasks) => {
+            const changedtasks = prevtasks.map((task) => {
+            if(task.id === id) {
+                return {...task, completed: !task.completed}   
+            } else {
+                return task;
+            }   
+        });
+
+        localStorage.setItem("task", JSON.stringify(changedtasks));
+        return changedtasks;
+        });
+    };
 
     return (
         <>
