@@ -15,8 +15,8 @@ export const TodoList = () => {
             const newtasks = [...prevtasks, ntask]
             localStorage.setItem("task", JSON.stringify(newtasks))
             return newtasks;
-        })
-    }
+        });
+    };
 
     const changeTask = (id: number) => {
         setTasks((prevtasks) => {
@@ -33,15 +33,30 @@ export const TodoList = () => {
         });
     };
 
+    const sortClick = () => {
+        const sortedTasks = [...tasks].sort((a, b) => {
+            if (a.completed === b.completed) {
+            return 0 
+            } else if (a.completed) {
+                return 1
+            } else {
+                return -1
+            }
+        });
+
+        setTasks(sortedTasks);
+        localStorage.setItem("task", JSON.stringify(sortedTasks))
+    };
+
     return (
         <>
         <h2>To do List</h2>
+        <button onClick={sortClick}>Sort</button>
         <AddTodoForm addTodoForm={AddANewTask}/>
 
         {tasks.map((task) => {
             return <ShowTask task = {task} completeTask={changeTask} key={task.id} />
-        })}
-        
+        })};
         </>
-    )
-}
+    );
+};
