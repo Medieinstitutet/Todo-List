@@ -10,6 +10,10 @@ export const TodoList = () => {
         );
 
     const AddANewTask = (theNewTask: string) => {
+        if (theNewTask.trim() === "") {
+            return;
+        };
+
         const ntask = new Task(Date.now(),theNewTask, false);
         setTasks((prevtasks) => {
             const newtasks = [...prevtasks, ntask]
