@@ -50,7 +50,7 @@ export const TodoList = () => {
 
     return (
         <>
-        <h2>To do List</h2>
+        <h2>To-Do List</h2>
         <button onClick={sortClick}>Sort</button>
         <AddTodoForm addTodoForm={AddANewTask}/>
 
