@@ -56,7 +56,7 @@ export const TodoList = () => {
 
         {tasks.map((task) => {
             return <ShowTask task = {task} completeTask={changeTask} key={task.id} />
-        })};
+        })}
         </>
     );
 };
